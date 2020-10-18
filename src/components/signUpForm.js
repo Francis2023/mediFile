@@ -1,7 +1,7 @@
 import React from 'react';
 import {Route} from 'react-router-dom';
 import {Form,Row,Col,Container,Button} from 'react-bootstrap';
-import dashboard from './dashboard';
+import nurseDashboard from './nurseDashboard';
 
 class signUpForm extends React.Component {
     
@@ -12,7 +12,9 @@ class signUpForm extends React.Component {
            email: '',
            cellphone: '',
            medicid: '',
-           password: ''
+           password: '',
+           profession: '',
+           verifyPassword: ''
        }
    }
 
@@ -99,6 +101,26 @@ class signUpForm extends React.Component {
                       />
                   </Col>
                 </Form.Group>
+                <Form.Group as={Row}>
+                      <Form.Label column sm={2}>
+                        Profession:
+                      </Form.Label>
+                      <Col sm={4}>
+                          <Form.Control 
+                            as="select"
+                            id="professionInput" 
+                            name="profession"
+                            value={this.state.profession}
+                            onchange={e => this.handleChange(encodeURI)}
+                          >
+                            <option>Doctor</option>
+                            <option>Nurse</option>
+                            <option>Lab Technician</option>
+                            <option>Administrator</option>
+                            <option>Accountant</option>
+                          </Form.Control>
+                      </Col>
+                    </Form.Group>
                 <Form.Group as={Row} >
                   <Form.Label column sm={2}>
                     Password
@@ -109,6 +131,20 @@ class signUpForm extends React.Component {
                         name="password"
                         type="password" 
                         value={this.state.password}
+                        onChange={e => this.handleChange(e)}
+                      />
+                  </Col>
+                </Form.Group>
+                <Form.Group as={Row} >
+                  <Form.Label column sm={2}>
+                    Verify Password
+                  </Form.Label>
+                  <Col sm={10}>
+                      <Form.Control
+                        id="verifyPasswordInput"
+                        name="password"
+                        type="password" 
+                        value={this.state.verifyPassword}
                         onChange={e => this.handleChange(e)}
                       />
                   </Col>
@@ -129,7 +165,7 @@ class signUpForm extends React.Component {
                 </Form.Group>
             </Form>
 
-            <Route exact path = "/dashboard" component={dashboard} />
+            <Route exact path = "/nurseDashboard" component={nurseDashboard} />
 
         </Container>
 

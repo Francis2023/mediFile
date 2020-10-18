@@ -1,6 +1,6 @@
 import React from 'react';
 import {Route} from 'react-router-dom';
-import dashboard from './dashboard';
+import nurseDashboard from './nurseDashboard';
 import {Form,Row,Col,Container,Button} from 'react-bootstrap';
 
 
@@ -12,6 +12,7 @@ class loginForm extends React.Component {
            name: '',
            medicid: '',
            password: '',
+           profession: ''
        };
 
      
@@ -23,23 +24,23 @@ class loginForm extends React.Component {
   }
   clearForm = (e) => {
      e.preventDefault();
-     this.setState({ ...this.state, name: '',medicid:'', password:''})
+     this.setState({ ...this.state, name: '',medicid:'', password:'',profession:''})
   }
 
-  handleSubmit = (e) => {
+  handleSubmit = (e,prof) => {
     e.preventDefault();
     this.clearForm(e);
     console.log(this.state)
-    this.props.history.push('/dashboard')
+    this.props.history.push(`${prof}/dashboard`)
   
   }
-
+ 
     render() {
         
         return (
          
             <Container className="center" >
-                <Form onSubmit={e => this.handleSubmit(e)}>
+                <Form onSubmit={e => this.handleSubmit(e,this.state.profession)}>
                   <Form.Group as={Row}  >
                     <Form.Label column sm={2}>
                       Name
@@ -76,12 +77,35 @@ class loginForm extends React.Component {
                       </Form.Label>
                       <Col sm={10}>
                           <Form.Control
-                            id="passwordIdInput"
+                            id="passwordInput"
                             name="password"
                             type="password" 
                             value={this.state.password}
                             onChange={e => this.handleChange(e)}
                           />
+                      </Col>
+                    </Form.Group>
+                    <Form.Group as={Row}>
+                      <Form.Label column sm={2}>
+                        Profession:
+                      </Form.Label>
+                      <Col sm={4}>
+                          <Form.Control 
+                            as="select"
+                            defaultValue="Nurse"
+                            id="professionInput" 
+                            name="profession"
+                            type="text"
+                            value={this.state.profession}
+                            onChange={e => this.handleChange(e)}
+                          >
+                            <option>Choose:</option>
+                            <option>Doctor</option>
+                            <option>Nurse</option>
+                            <option>Lab Technician</option>
+                            <option>Administrator</option>
+                            <option>Accountant</option>
+                          </Form.Control>
                       </Col>
                     </Form.Group>
                     <Form.Group as={Row} >
@@ -98,7 +122,7 @@ class loginForm extends React.Component {
                     </Form.Group>
                 </Form>
 
-                <Route exact path = "/dashboard" component={dashboard} />
+               {/* <Route exact path = "/Dashboard" component={nurseDashboard} /> */}
 
             </Container>
         )

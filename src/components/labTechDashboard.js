@@ -15,7 +15,7 @@ const Styledh1 = styled.h1`
      margin-bottom: 6vh;
 `
 
-function dashboard (props) {
+function labTechDashboard (props) {
 
   
    return (
@@ -71,4 +71,4 @@ function dashboard (props) {
  
 }
 
-export default dashboard;
+export default labTechDashboard;
