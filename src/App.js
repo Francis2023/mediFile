@@ -7,15 +7,16 @@ import Header from './components/Header';
 import patients from './components/patients'
 import nurseDashboard from './components/nurseDashboard';
 import doctorDashboard from './components/doctorDashboard';
-import accountDashboard from './components/accountDashboard';
+import FrontDeskDashboard from './components/FrontDeskDashboard';
 import adminDashboard from './components/adminDashboard';
-import patientsLogin from './components/patientsLogin';
-import patientsList from './components/patientsList'
+import patientsList from './components/PatientsList'
 import {Navbar,NavDropdown} from 'react-bootstrap';
 import Styled from 'styled-components'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import { faBars} from "@fortawesome/free-solid-svg-icons";
 import labTechDashboard from './components/labTechDashboard';
+import newPatient from './components/newPatient'
+
 
 
 const StyledNav = Styled.nav`
@@ -53,11 +54,12 @@ function App() {
        <Route exact path = "/Nurse/dashboard" component={nurseDashboard} /> 
        <Route exact path = "/Doctor/dashboard" component={doctorDashboard} />
        <Route exact path = "/Lab Technician/dashboard" component={labTechDashboard} />
-       <Route exact path = "/Accountant/dashboard" component={accountDashboard} />
+       <Route exact path = "/Front Desk/dashboard" component={FrontDeskDashboard} />
        <Route exact path = "/Administrator/dashboard" component={adminDashboard} />
        <Route exact path = "/patientsList" component={patientsList} />
-       <Route exact path = "/PatientsLogin" component={patientsLogin}/>
        <Route exact path = "/patients/:id" component={patients} />
+       <Route exact path = "/new_patient" component={newPatient} />
+       
 
     </Container>
   );

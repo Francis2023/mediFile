@@ -1,6 +1,4 @@
 import React from 'react'
-import {Route} from 'react-router-dom';
-import patientsLogin from './patientsLogin'
 import {Card,CardDeck} from 'react-bootstrap'
 import styled from 'styled-components';
 import { faIdCard,faListAlt,faVial,faFileMedical} from "@fortawesome/free-solid-svg-icons";
@@ -23,7 +21,7 @@ function patients (props) {
             <Styledh1>Patients Name</Styledh1>
             <CardDeck >
                 <Card className="text-center" >
-                  <Card.Link href='/patientsLogin' >
+                  <Card.Link href='/' >
                    <Card.Body>
                     <Card.Title as="h5">Profile</Card.Title>
                     

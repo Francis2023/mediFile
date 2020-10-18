@@ -1,6 +1,4 @@
 import React from 'react'
-import {Route} from 'react-router-dom';
-import patientsLogin from './patientsLogin'
 import {Card,CardDeck} from 'react-bootstrap'
 import styled from 'styled-components';
 import { faUsers,faEnvelope,faTasks,faUserMd} from "@fortawesome/free-solid-svg-icons";
@@ -60,8 +58,7 @@ function labTechDashboard (props) {
                   </Card.Link>
                 </Card>
             </CardDeck>
-
-      <Route exact path = "/patientsLogin" component={patientsLogin} />   
+ 
        </div>
 
 

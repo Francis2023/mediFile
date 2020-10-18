@@ -1,6 +1,4 @@
 import React from 'react'
-import {Route} from 'react-router-dom';
-import patientsLogin from './patientsLogin'
 import {Card,CardDeck} from 'react-bootstrap'
 import styled from 'styled-components';
 import { faUsers,faEnvelope,faTasks,faUserMd} from "@fortawesome/free-solid-svg-icons";
@@ -23,7 +21,7 @@ function nurseDashboard (props) {
             <Styledh1>Dashboard</Styledh1>
             <CardDeck >
                 <Card className="text-center" >
-                  <Card.Link href='/' >
+                  <Card.Link href='/patientsList' >
                    <Card.Body>
                     <Card.Title as="h5"> PATIENTS</Card.Title>
                     
@@ -60,8 +58,7 @@ function nurseDashboard (props) {
                   </Card.Link>
                 </Card>
             </CardDeck>
-
-      <Route exact path = "/" component={patientsLogin} />   
+   
        </div>
 
 

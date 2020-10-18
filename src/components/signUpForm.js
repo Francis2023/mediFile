@@ -117,7 +117,7 @@ class signUpForm extends React.Component {
                             <option>Nurse</option>
                             <option>Lab Technician</option>
                             <option>Administrator</option>
-                            <option>Accountant</option>
+                            <option>Front Desk</option>
                           </Form.Control>
                       </Col>
                     </Form.Group>

@@ -1,6 +1,4 @@
 import React from 'react';
-import {Route} from 'react-router-dom';
-import nurseDashboard from './nurseDashboard';
 import {Form,Row,Col,Container,Button} from 'react-bootstrap';
 
 
@@ -104,7 +102,7 @@ class loginForm extends React.Component {
                             <option>Nurse</option>
                             <option>Lab Technician</option>
                             <option>Administrator</option>
-                            <option>Accountant</option>
+                            <option>Front Desk</option>
                           </Form.Control>
                       </Col>
                     </Form.Group>

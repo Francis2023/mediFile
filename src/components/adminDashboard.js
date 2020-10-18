@@ -1,6 +1,4 @@
 import React from 'react'
-import {Route} from 'react-router-dom';
-import patientsLogin from './patientsLogin'
 import {Card,CardDeck} from 'react-bootstrap'
 import styled from 'styled-components';
 import { faEnvelope,faTasks, faUser, faCalendarPlus, faClipboardList, faUsers, faUserTie, faCalendarWeek, faChartBar, faBoxes, faFolder} from "@fortawesome/free-solid-svg-icons";
@@ -126,7 +124,7 @@ function adminDashboard (props) {
                 </Card>
             </CardDeck>
 
-      <Route exact path = "/patientsLogin" component={patientsLogin} />   
+        
        </div>
 
 
