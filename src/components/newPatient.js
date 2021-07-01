@@ -3,19 +3,28 @@ import {Route} from 'react-router-dom';
 import {Form,Row,Col,Container,Button} from 'react-bootstrap';
 import nurseDashboard from './nurseDashboard';
 import { Label } from 'react-bootstrap';
+import { withTheme } from 'styled-components';
 
 class newPatient extends React.Component {
     
    constructor(props) {
        super(props)
        this.state = {
-           name: '',
-           email: '',
+           firstName: '',
+           middleName: '',
+           lastName: '',
+           streetAddress: '',
+           city: '',
+           county: '',
+           country: '',
            cellphone: '',
-           medicid: '',
-           password: '',
-           profession: '',
-           verifyPassword: ''
+           email: '',
+           sex: ' ',
+           birthday: '',    
+           maritalStatus: '',
+           emergencyContactName: '',
+           emergencyContactRelationship: '',
+           emergencyContactNumber: ''
        }
    }
 
@@ -32,15 +41,16 @@ class newPatient extends React.Component {
     e.preventDefault();
     this.clearForm(e);
     console.log(this.state)
-    this.props.history.push('/dashboard')
-  
+    console.log("Submitted")
   }
 
     render() {
         return (
             <Container className="center" >
-            <h3 className="welcomeLine"> Welcome to our Facility</h3>
+            <h3 style={{textAlign:'center', paddingBottom:'2rem' }}> Welcome to our Facility</h3>
             <Form onSubmit={e => this.handleSubmit(e)}>
+            <h5>Personal Information</h5>
+            <hr style={{backgroundColor:"#ffffff"}}/>
             <Form.Group as={Row}>       
                <Col >
                        <Form.Label>Frist Name</Form.Label>
@@ -119,7 +129,7 @@ class newPatient extends React.Component {
                         name="cellphone"
                         placeholder="0774-000000"
                         type="tel"
-                        value={this.state.streetAddress}
+                        value={this.state.cellphone}
                         onChange={e => this.handleChange(e)}
                     />
                     </Col> 
@@ -136,16 +146,22 @@ class newPatient extends React.Component {
                 </Form.Group>
                 <Form.Group as={Row}>
                     <Form.Label column sm={2}>Sex : </Form.Label>
-                    
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value={this.state.male} onChange={e => this.handleChange(e)}/>
-                        <label class="form-check-label" for="inlineCheckbox1">Male</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value={this.state.female} onChange={e => this.handleChange(e)}/>
-                        <label class="form-check-label" for="inlineCheckbox2">Female</label>
-                    </div>
-                
+                    <Col sm={3}>
+                        <Form.Control
+                            as="select"
+                            defaultValue="Male"
+                            type="text"
+                            id="sexInput" 
+                            name="sex"
+                            value={this.state.sex}
+                            onChange={e => this.handleChange(e)}
+                        >
+                            <option>Choose ...</option>
+                            <option>Male</option>
+                            <option>Female</option>
+                            <option>Others</option>
+                        </Form.Control>
+                    </Col>
                 </Form.Group>
                 <Form.Group as={Row}>
                     <Form.Label column sm={3}>Date of Birth :</Form.Label>
@@ -161,7 +177,82 @@ class newPatient extends React.Component {
                 </Form.Group>     
                 <Form.Group as={Row}>
                     <Form.Label column sm={3}>Marital Status : </Form.Label>
+                    <Col sm={4}>
+                        <Form.Control
+                            as="select"
+                            defaultValue="Single"
+                            type="text"
+                            id="maritalStatusInput" 
+                            name="maritalStatus"
+                            value={this.state.maritalStatus}
+                            onChange={e => this.handleChange(e)}
+                        >
+                            <option>Choose ...</option>
+                            <option>Married</option>
+                            <option>Single</option>
+                            <option>Divorced</option>
+                        </Form.Control>
+                    
+                    </Col>
                 </Form.Group>
+                <h5 className="newPatientSubH"> Emergency Contact</h5>
+                <hr  style={{ color: '#FFFFFF',backgroundColor: '#FFFFFF',height: .5,borderColor : '#000000'}}/>
+                <Form.Group as={Row}>       
+                    
+                       <Form.Label column sm={3}>Contact Name : </Form.Label>
+                       <Col sm={6}>
+                       <Form.Control 
+                           name="emergencyContactName"
+                           type="text"
+                           value={this.state.emergencyContactName}
+                           onChange={e => this.handleChange(e)}
+                       />
+                        </Col>
+                 </Form.Group>
+                 <Form.Group as={Row}>       
+                    
+                    <Form.Label column sm={3}>Relationship : </Form.Label>
+                    <Col sm={6}>
+                    <Form.Control 
+                        name="emergencyContactRelationship"
+                        type="text"
+                        placeholder="Ex. Mother"
+                        value={this.state.emergencyContactRelationship}
+                        onChange={e => this.handleChange(e)}
+                    />
+                    </Col>
+              </Form.Group>
+              <Form.Group as={Row}> 
+                    
+                    <Form.Label column sm={3}>Cellphone</Form.Label>
+                    <Col sm={6} >
+                    <Form.Control 
+                        name="emergencyContactNumber"
+                        placeholder="0774-000000"
+                        type="tel"
+                        value={this.state.emergencyContactNumber}
+                        onChange={e => this.handleChange(e)}
+                    />
+                    </Col> 
+                </Form.Group>
+                <h5 > Medical History</h5>
+                <hr style={{backgroundColor:"#ffffff"}} />
+                 
+                {/* ADD MEDICAL HISTORY FORM HERE*/}
+
+                <Form.Group as={Row} style={{display:'flex', justifyContent:'center'}} >
+                    <Col sm={3} >
+                      <Button type="submit" value="Submit"   >   
+                        Submit        
+                      </Button>
+                    </Col>
+                    <Col sm={3} >
+                      <Button  onClick={e => this.clearForm(e)} >
+                        Clear
+                      </Button>
+                    </Col>
+                </Form.Group>
+
             </Form>
 
             <Route exact path = "/nurseDashboard" component={nurseDashboard} />

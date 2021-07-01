@@ -6,7 +6,7 @@ import'mdbreact/dist/css/mdb.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import {BrowserRouter as Router} from 'react-router-dom';
-import './fontawesome'
+import './fontawesome';
 
 //import './App.scss';
 

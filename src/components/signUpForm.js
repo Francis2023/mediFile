@@ -2,6 +2,7 @@ import React from 'react';
 import {Route} from 'react-router-dom';
 import {Form,Row,Col,Container,Button} from 'react-bootstrap';
 import nurseDashboard from './nurseDashboard';
+import * as Yup from 'yup';
 
 class signUpForm extends React.Component {
     
@@ -18,27 +19,41 @@ class signUpForm extends React.Component {
        }
    }
 
-   handleChange =  (e) => {
+  formSchema = Yup.object().shape({
+    email: Yup
+      .string()
+      .email("Must be a valid email address")
+      .required("Must include email address"),
+    password: Yup
+      .string()
+      .min(8, "Password must be at least 9 characters long.")
+      .required("Password is require"),
+    profession: Yup
+      .string()
+      .required("Profession is required")
+  })
+
+  handleChange =  (e) => {
     this.setState({   [e.target.name]: e.target.value  });
     
   }
   clearForm = (e) => {
      e.preventDefault();
-     this.setState({ ...this.state, name: '',medicid:'', password:'', email:'', cellphone:''})
+     this.setState({ ...this.state, name: '',medicid:'', password:'',verifyPassword:'',profession:'', email:'', cellphone:''})
   }
 
-  handleSubmit = (e) => {
+  handleSubmit = (e,prof) => {
     e.preventDefault();
     this.clearForm(e);
     console.log(this.state)
-    this.props.history.push('/dashboard')
+    this.props.history.push(`${prof}/dashboard`)
   
   }
 
     render() {
         return (
             <Container className="center" >
-            <Form onSubmit={e => this.handleSubmit(e)}>
+            <Form onSubmit={e => this.handleSubmit(e,this.state.profession)}>
               <Form.Group as={Row}  >
                 <Form.Label column sm={2}>
                   Name
@@ -108,11 +123,14 @@ class signUpForm extends React.Component {
                       <Col sm={4}>
                           <Form.Control 
                             as="select"
+                            defaultValue="Nurse"
                             id="professionInput" 
                             name="profession"
+                            type="text"
                             value={this.state.profession}
-                            onchange={e => this.handleChange(encodeURI)}
+                            onChange={e => this.handleChange(e)}
                           >
+                            <option>Choose ...</option>
                             <option>Doctor</option>
                             <option>Nurse</option>
                             <option>Lab Technician</option>
@@ -142,7 +160,7 @@ class signUpForm extends React.Component {
                   <Col sm={10}>
                       <Form.Control
                         id="verifyPasswordInput"
-                        name="password"
+                        name="verifyPassword"
                         type="password" 
                         value={this.state.verifyPassword}
                         onChange={e => this.handleChange(e)}
